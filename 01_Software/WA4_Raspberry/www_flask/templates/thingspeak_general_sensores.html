@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agro.io: Gráficas General Clima</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--------------------------------------------------------------------
+	Webpage style configuration
+--------------------------------------------------------------------->
+	<style>
+	* {
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: Arial, Helvetica, sans-serif;
+	    margin: 0;
+	}
+	
+
+	/* Style the header */
+	.header {
+	    padding: 1px;
+	    text-align: center;
+	    background: #1abc9c;
+	    color: white;
+	}
+	
+	/* Increase the font size of the h1 element */
+	.header h1 {
+	    font-size: 20px;
+	}
+	
+	
+	/* Footer */
+	.footer {
+	    padding: 5px;
+	    text-align: center;
+	    background: #ddd;
+	    font-size: 20px;
+	}
+	
+	/* Table */
+	table {
+            width:100%; 
+            float:left;
+	}
+	</style>
+
+
+</head>
+
+<!--------------------------------------------------------------------
+	Webpage content
+--------------------------------------------------------------------->
+<body>
+	<div class="header">
+	  <h1>Gráficas: General Clima</h1>
+	</div>
+
+<!--------------------------------------------------------------------
+	Graphs
+--------------------------------------------------------------------->
+
+	<table border="0" align="center">
+
+<!--------------------------------------------------------------------
+	Evapotranspiration
+--------------------------------------------------------------------->
+	<tr bgcolor="black">
+	   <td align="center"><span style="font-size:20pt;text-align:center;color:white">
+		Evapotranspiración</span>
+	</td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/805288/charts/7?bgcolor=%23ffffff&color=%23d62020&days={{plot_days}}&dynamic=true&title=ETo&type=line&xaxis=Fecha&yaxis=mm%2Fdía&yaxismax=20&yaxismin=0"></iframe></td>
+	</tr>
+	<tr bgcolor="white">
+	   <td align="center"><span style="font-size:10pt;text-align:center;color:white">.</span></td>
+	</tr>
+
+<!--------------------------------------------------------------------
+	Weather
+--------------------------------------------------------------------->
+	<tr bgcolor="black">
+	   <td align="center"><span style="font-size:20pt;text-align:center;color:white">
+		Variables Climáticas</span>
+	</td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/805288/charts/8?bgcolor=%23ffffff&color=%23d62020&days={{plot_days}}&dynamic=true&title=Temperatura&type=line&xaxis=Fecha&yaxis=%C2%B0C&yaxismax=50&yaxismin=-10"></iframe></td>
+	</tr>
+	<tr bgcolor="white">
+	   <td align="center"><span style="font-size:10pt;text-align:center;color:white">.</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/805292/charts/8?bgcolor=%23ffffff&color=%23d62020&days={{plot_days}}&dynamic=true&title=Humedad+Relativa&type=line&xaxis=Fecha&yaxis=%25&yaxismax=100&yaxismin=0"></iframe></td>
+	</tr>
+	<tr bgcolor="white">
+	   <td align="center"><span style="font-size:10pt;text-align:center;color:white">.</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/805293/charts/8?bgcolor=%23ffffff&color=%23d62020&days={{plot_days}}&dynamic=true&title=Radiaci%C3%B3n+Solar&type=line&xaxis=Fecha&yaxis=w%2Fm2&yaxismax=1200&yaxismin=0"></iframe></td>
+	</tr>
+	<tr bgcolor="white">
+	   <td align="center"><span style="font-size:10pt;text-align:center;color:white">.</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/806930/charts/8?bgcolor=%23ffffff&color=%23d62020&days={{plot_days}}&dynamic=true&title=Velocidad+de+Viento&type=line&xaxis=Fecha&yaxis=m%2Fs&yaxismax=10&yaxismin=0"></iframe></td>
+	</tr>
+	<tr bgcolor="white">
+	   <td align="center"><span style="font-size:10pt;text-align:center;color:white">.</span></td>
+	</tr>
+
+
+	</table>
+
+<!--------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------->
+	<hr>
+	<div class="footer">
+		<a href="/thingspeak_index/">Regresar a Gráficas</a>
+	</div>
+
+
+<!--------------------------------------------------------------------
+	End
+--------------------------------------------------------------------->
+</body>
+</html>
+

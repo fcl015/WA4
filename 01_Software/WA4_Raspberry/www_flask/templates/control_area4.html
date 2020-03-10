@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agro.io: Control Area 4</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!--------------------------------------------------------------------
+	Webpage style configuration
+--------------------------------------------------------------------->
+	<style>
+	* {
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: Arial, Helvetica, sans-serif;
+	    margin: 0;
+	}
+	
+	/* Style the header */
+	.header {
+	    padding: 1px;
+	    text-align: center;
+	    background: #1abc9c;
+	    color: white;
+	}
+	
+	/* Increase the font size of the h1 element */
+	.header h1 {
+	    font-size: 20px;
+	}
+	
+	
+	/* Footer */
+	.footer {
+	    padding: 5px;
+	    text-align: center;
+	    background: #ddd;
+	    font-size: 20px;
+	}
+	
+	/* Table */
+	table {
+            width:100%; 
+            float:left;
+	}
+
+	/* Buttons */
+	.button {
+	  background-color: #EAEDED;
+	  border: 2px solid #1abc9c;
+	  color: black;
+	  padding: 10px 10Px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  cursor: pointer;
+	  transition-duration: 0.3s;
+	}
+
+	.button1{
+	  padding: 10px 10px;
+	}
+
+	.buttonD{
+	  padding: 10px 10px;
+	  background-color: #1abc9c;
+	  color: white;
+	  cursor: context-menu;
+	}
+
+	.buttonApagado{
+	  padding: 10px 20px;
+	  background-color: red;
+	  border: 2px solid red;
+	  color: white;
+	  cursor: context-menu;
+	  height:55px;
+	  width:250px;	
+	}
+
+	.buttonEncendido{
+	  padding: 10px 20px;
+	  background-color: green;
+	  border: 2px solid green;
+	  color: white;
+	  cursor: context-menu;
+	  height:55px;
+	  width:250px;	
+	}
+
+	.button:hover {
+	  background-color: #1abc9c;
+	  color: white;
+	}
+
+	.button {border-radius: 4px;}
+
+	input[type="number"]{
+		width: 60px;
+		height: 30px;
+		font-size: 20px;
+		text-align: center;
+	}
+
+
+	</style>
+
+
+</head>
+
+<!--------------------------------------------------------------------
+	Webpage content
+--------------------------------------------------------------------->
+<body>
+	<div class="header">
+	  <h1>Control Area 4</h1>
+	</div>
+
+<!--------------------------------------------------------------------
+	Operation Mode
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   	<td align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+			Modo de Operación</span>
+	   	</td>
+	</tr>
+	<tr bgcolor="white">
+	<td align="center">
+		{% if mode == 0 %}
+			<a href="/control_area4/manual" class="button buttonD" style="font-size:18pt">Manual</a>
+		{% else %}
+			<a href="/control_area4/manual" onclick="return change_to_manual()" class="button button1" style="font-size:18pt">Manual</a>
+		{% endif %}
+		{% if mode == 1 %}
+			<a href="/control_area4/sched" class="button buttonD" style="font-size:18pt">Tiempo</a>
+		{% else %}
+			<a href="/control_area4/sched" onclick="return change_to_sched()" class="button button1" style="font-size:18pt">Tiempo</a>
+		{% endif %}
+		{% if mode == 2 %}
+			<a href="/control_area4/auto" class="button buttonD" style="font-size:18pt">Automático</a>
+		{% else %}
+			<a href="/control_area4/auto" onclick="return change_to_auto()" class="button button1" style="font-size:18pt">Automático</a>
+		{% endif %}
+	</td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Irrigation Control (Manual Mode Only)
+--------------------------------------------------------------------->
+	{% if mode == 0 %}
+		<table border="0">
+		<tr bgcolor="black">
+		<td align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+			Control Manual</span>
+		</td>
+		</tr>
+
+		{% if m_control == 0 %}
+			<form action="/area4_manual_control/" method="POST" onsubmit="return cambiar_manual_on()">
+				<tr bgcolor="white">
+				<td align="center">
+					<input type="hidden" id="m_mode" name="m_mode" value={{mode}}>
+					<input type="hidden" id="control" name="control" value="1">
+					<input type="submit" class="button" value="Encender Riego" style="font-size:18pt">
+				</td>
+				</tr>
+				<tr bgcolor="white">
+				<td align="center">
+					<input type="submit" class="buttonApagado" value="APAGADO" style="font-size:24pt">
+					<br><br>
+				</td>
+				</tr>
+			</form>
+		{% elif m_control == 1 %}
+			<form action="/area4_manual_control/" method="POST" onsubmit="return cambiar_manual_off()">
+				<tr bgcolor="white">
+				<td align="center">
+					<input type="hidden" id="m_mode" name="m_mode" value={{mode}}>
+					<input type="hidden" id="control" name="control" value="0">
+					<input type="submit" class="button" value="Apagar Riego" style="font-size:18pt"><br>
+				</td>
+				</tr>
+				<tr bgcolor="white">
+				<td align="center">
+					<input type="submit" class="buttonEncendido" value="ENCENDIDO" style="font-size:24pt">
+					<br><br>
+				</td>
+				</tr>
+			</form>
+		{% endif %}
+		</table>
+	{% endif %}
+
+<!--------------------------------------------------------------------
+	Irrigation Control (Time Mode Only)
+--------------------------------------------------------------------->
+	{% if mode == 1 %}
+		<table border="0">
+		<tr bgcolor="black">
+		   	<td colspan="3" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+				Control por Tiempo
+		   	</td>
+		</tr>
+		<tr bgcolor="#EAEDED">
+		   	<td colspan="3" align="center"><span style="font-size:15pt;color:black">Configurar Calendario</td>
+		</tr>
+	
+		<form action="/area4_sched/" onsubmit="return actualizar_sched()" method="POST">
+				<input type="hidden" id="s_mode" name="s_mode" value={{mode}}>
+
+		   <tr bgcolor="White" >
+			<td align="right"><span style="font-weight:bold;font-size:20px">Día</td>
+			<td align="center"><span style="font-weight:bold;font-size:20px">Inicio (hh:mm)</td>
+			<td align="left"><span style="font-weight:bold;font-size:20px">Final (hh:mm)</td>
+		   </tr>
+		   <tr bgcolor="White" >
+			<td align="right"><span style="font-size:20px">{{day[0]}}</span>
+			</td>
+			<td align="center"><span style="font-size:20px">
+				<input type="hidden" id="day0" name="day0" value={{day[0]}}>
+				<input type="number" min="0" max="23" id="start_h0" name="start_h0" value={{start_h[0]}} >:
+				<input type="number" min="0" max="59" id="start_m0" name="start_m0" value={{start_m[0]}} > </span>
+			</td>
+			<td align="left"><span style="font-size:20px">
+				<input type="number" min="0" max="23" id="end_h0" name="end_h0" value={{end_h[0]}}>:
+				<input type="number" min="0" max="59" id="end_m0" name="end_m0" value={{end_m[0]}}> </span>
+			</td>		   
+		</tr>
+		   <tr bgcolor="White" >
+			<td align="right"><span style="font-size:20px">{{day[1]}}</span>
+			</td>
+			<td align="center"><span style="font-size:20px">
+				<input type="hidden" id="day1" name="day1" value={{day[1]}}>
+				<input type="number" min="0" max="23" id="start_h1" name="start_h1" value={{start_h[1]}}>:
+				<input type="number" min="0" max="59" id="start_m1" name="start_m1" value={{start_m[1]}}> </span>
+			</td>
+			<td align="left"><span style="font-size:20px">
+				<input type="number" min="0" max="23" id="_end_h1" name="end_h1" value={{end_h[1]}}>:
+				<input type="number" min="0" max="59" id="_end_m1" name="end_m1" value={{end_m[1]}}> </span>
+			</td>		   
+		</tr>
+		   <tr bgcolor="White" >
+			<td align="right"><span style="font-size:20px">{{day[2]}}</span>
+			</td>
+			<td align="center"><span style="font-size:20px">
+				<input type="hidden" id="day2" name="day2" value={{day[2]}}>
+				<input type="number" min="0" max="23" id="start_h2" name="start_h2" value={{start_h[2]}}>:
+				<input type="number" min="0" max="59" id="start_m2" name="start_m2" value={{start_m[2]}}> </span>
+			</td>
+			<td align="left"><span style="font-size:20px">
+				<input type="number" min="0" max="23" id="end_h2" name="end_h2" value={{end_h[2]}}>:
+				<input type="number" min="0" max="59" id="end_m2" name="end_m2" value={{end_m[2]}}> </span>
+			</td>		   
+		</tr>
+		   <tr bgcolor="White" >
+			<td align="right"><span style="font-size:20px">{{day[3]}}</span>
+			</td>
+			<td align="center"><span style="font-size:20px">
+				<input type="hidden" id="day3" name="day3" value={{day[3]}}>
+				<input type="number" min="0" max="23" id="start_h3" name="start_h3" value={{start_h[3]}}>:
+				<input type="number" min="0" max="59" id="start_m3" name="start_m3" value={{start_m[3]}}> </span>
+			</td>
+			<td align="left"><span style="font-size:20px">
+				<input type="number" min="0" max="23" id="end_h3" name="end_h3" value={{end_h[3]}}>:
+				<input type="number" min="0" max="59" id="end_m3" name="end_m3" value={{end_m[3]}}> </span>
+			</td>		   
+		</tr>
+		   <tr bgcolor="White" >
+			<td align="right"><span style="font-size:20px">{{day[4]}}</span>
+			</td>
+			<td align="center"><span style="font-size:20px">
+				<input type="hidden" id="day4" name="day4" value={{day[4]}}>
+				<input type="number" min="0" max="23" id="start_h4" name="start_h4" value={{start_h[4]}}>:
+				<input type="number" min="0" max="59" id="start_m4" name="start_m4" value={{start_m[4]}}> </span>
+			</td>
+			<td align="left"><span style="font-size:20px">
+				<input type="number" min="0" max="23" id="end_h4" name="end_h4" value={{end_h[4]}}>:
+				<input type="number" min="0" max="59" id="end_m4" name="end_m4" value={{end_m[4]}}> </span>
+			</td>		   
+		</tr>
+		   <tr bgcolor="White" >
+			<td align="right"><span style="font-size:20px">{{day[5]}}</span>
+			</td>
+			<td align="center"><span style="font-size:20px">
+				<input type="hidden" id="day5" name="day5" value={{day[5]}}>
+				<input type="number" min="0" max="23" id="start_h5" name="start_h5" value={{start_h[5]}}>:
+				<input type="number" min="0" max="59" id="start_m5" name="start_m5" value={{start_m[5]}}> </span>
+			</td>
+			<td align="left"><span style="font-size:20px">
+				<input type="number" min="0" max="23" id="end_h5" name="end_h5" value={{end_h[5]}}>:
+				<input type="number" min="0" max="59" id="end_m5" name="end_m5" value={{end_m[5]}}> </span>
+			</td>		   
+		</tr>
+		   <tr bgcolor="White" >
+			<td align="right"><span style="font-size:20px">{{day[6]}}</span>
+			</td>
+			<td align="center"><span style="font-size:20px">
+				<input type="hidden" id="day6" name="day6" value={{day[6]}}>
+				<input type="number" min="0" max="23" id="start_h6" name="start_h6" value={{start_h[6]}}>:
+				<input type="number" min="0" max="59" id="start_m6" name="start_m6" value={{start_m[6]}}> </span>
+			</td>
+			<td align="left"><span style="font-size:20px">
+				<input type="number" min="0" max="23" id="end_h6" name="end_h6" value={{end_h[6]}}>:
+				<input type="number" min="0" max="59" id="end_m6" name="end_m6" value={{end_m[6]}}> </span>
+			</td>		   
+		</tr>
+		<tr bgcolor="white">
+			<td colspan="3" align="center">
+			<input type="submit" class="button "value="Actualizar" style="font-size:18pt">
+			<input type="reset" class="button "value="Cancelar" style="font-size:18pt"></span></td>
+		</tr>	
+		</form>
+
+
+		</table>
+	{% endif %}
+
+<!--------------------------------------------------------------------
+	Irrigation Control (Automatic Mode Only)
+--------------------------------------------------------------------->
+	{% if mode == 2 %}
+		<table border="0">
+		<tr bgcolor="black">
+		   	<td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+				Control Automático</span>
+		   	</td>
+		</tr>
+
+		<tr bgcolor="#EAEDED">
+		   	<td colspan="2" align="center"><span style="font-size:15pt;color:black">Configurar Límites</span></td>
+		</tr>
+	
+		<form action="/area4_auto/" onsubmit="return actualizar_auto()" method="POST">
+				<input type="hidden" id="a_mode" name="a_mode" value={{mode}}>
+
+		 <tr bgcolor="White" >
+			<td align="center"><span style="font-weight:bold;font-size:20px">Parámetro</td>
+			<td align="left"><span style="font-weight:bold;font-size:20px">Valor</td>
+		 </tr>
+		 <tr bgcolor="White" >
+			<td align="center"><span style="font-size:20px">Límite Superior</span></td>
+			<td align="left"><span style="font-size:20px">
+				<input type="number" min="20.0" max="50.0" step="0.1" id="auto_hl" name="auto_hl" value={{h_limit}} > %VWC</span>
+			</td>
+		 </tr>
+		 <tr bgcolor="White" >
+			<td align="center"><span style="font-size:20px">Límite Inferior</span></td>
+			<td align="left"><span style="font-size:20px">
+				<input type="number" min="20.0" max="50.0" step="0.1" id="auto_ll" name="auto_ll" value={{l_limit}} > %VWC</span>
+			</td>
+		 </tr>
+		 <tr bgcolor="white">
+			<td colspan="2" align="center">
+			<input type="submit" class="button "value="Actualizar" style="font-size:18pt">
+			<input type="reset" class="button "value="Cancelar" style="font-size:18pt"></span></td>
+		 </tr>	
+		 </form>
+		 </table>
+	{% endif %}
+
+<!--------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------->
+	<hr>
+	<div class="footer">
+		<a href="/control_index/">Regresar a Control</a>
+	</div>
+
+<!--------------------------------------------------------------------
+	Functions 
+--------------------------------------------------------------------->
+<script>
+function cambiar_manual_on() {
+	return(confirm('¿Estás seguro de ENCENDER el riego? '))
+}
+
+function cambiar_manual_off() {
+	return(confirm('¿Estás seguro de APAGAR el riego? '))
+}
+
+function actualizar_sched() {
+	return(confirm('¿Estás seguro de ACTUALIZAR el calendario de riego? '))
+}
+
+function actualizar_auto() {
+	return(confirm('¿Estás seguro de ACTUALIZAR los limites de riego? '))
+}
+
+
+function change_to_manual() {
+	return(confirm('¿Estás seguro de cambiar a modo MANUAL? '))
+}
+
+function change_to_sched() {
+	return(confirm('¿Estás seguro de cambiar a modo TIEMPO? '))
+}
+
+function change_to_auto() {
+	return(confirm('¿Estás seguro de cambiar a modo AUTOMÁTICO? '))
+}
+</script>
+
+
+<!--------------------------------------------------------------------
+	End
+--------------------------------------------------------------------->
+</body>
+</html>
+

@@ -1,0 +1,13 @@
+actuator_mac_address=0013a20040a8506e
+sensor_mac_address=0013a200416cc89b
+weather_mac_address=0013a20040b135bc
+ndvi_mac_address=ffffffffffffffff
+Q=0.00010
+R=0.01000
+p1_ant=0.01000
+smKalman_ant=40.93
+valve_status=0
+sm_sensors=111
+sm_actuators=0010
+altitude=1440
+ndvi_alpha=1.8600

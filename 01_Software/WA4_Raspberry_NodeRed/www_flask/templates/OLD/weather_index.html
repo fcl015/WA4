@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agro.io: Weather</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="60">
+
+<!--------------------------------------------------------------------
+	Webpage style configuration
+--------------------------------------------------------------------->
+	<style>
+	* {
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: Arial, Helvetica, sans-serif;
+	    margin: 0;
+	}
+	
+	/* Style gages */
+	#gtem,
+	#ghum,
+	#gwin,
+	#grad,
+	#geto {
+		width: auto;
+		height: auto;
+		display: inline-block;
+		margin: auto;
+	}
+
+	/* Style the header */
+	.header {
+	    padding: 1px;
+	    text-align: center;
+	    background: #1abc9c;
+	    color: white;
+	}
+	
+	/* Increase the font size of the h1 element */
+	.header h1 {
+	    font-size: 20px;
+	}
+	
+	
+	/* Footer */
+	.footer {
+	    padding: 5px;
+	    text-align: center;
+	    background: #ddd;
+	    font-size: 20px;
+	}
+	
+	/* Table */
+	table {
+            width:100%; 
+            float:left;
+	}
+	</style>
+
+
+</head>
+
+<!--------------------------------------------------------------------
+	Webpage content
+--------------------------------------------------------------------->
+<body>
+	<div class="header">
+	  <h1>Monitoreo Climático</h1>
+	  <h1>Last Updated: {{timestamp}}</h1>
+	</div>
+
+
+<!--------------------------------------------------------------------
+	Weather Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Condiciones Climáticas</span><
+	   /td>
+	</tr>
+	<tr bgcolor="White">
+         <td colspan="2" align="center"><span id="geto"></span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="gtem"></span></td>
+	   <td align="center"><span id="ghum"></span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="grad"></span></td>
+	   <td align="center"><span id="gwin"></span></td>
+	</tr>
+	</table>
+
+
+
+<!--------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------->
+	<hr>
+	<div class="footer">
+		<a href="/">Regresar a Inicio</a>
+	</div>
+
+<!--------------------------------------------------------------------
+	Javascript gages
+--------------------------------------------------------------------->
+
+    <script src="/static/raphael-2.1.4.min.js"></script>
+    <script src="/static/justgage.js"></script>
+    <script>
+	var gtem,ghum,grad,gwin,geto;
+	document.addEventListener("DOMContentLoaded", function(event) {
+	    geto = new JustGage({
+		id: "geto",
+		value: {{w_eto}},
+		valueFontColor: "black",
+		title: "Evapotranspiración",
+		titleFontColor: "black",
+		label: "mm/día",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 20,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 10,
+	          hi: 20
+	        }, {
+	          color: 'green',
+	          lo: 5,
+	          hi: 10
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 5
+	        }],
+	        counter: true
+		});
+	    gtem = new JustGage({
+		id: "gtem",
+		value: {{w_tem}},
+		valueFontColor: "black",
+		title: "Temperatura",
+		titleFontColor: "black",
+		label: "°C",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: -10,
+		max: 50,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 30,
+	          hi: 50
+	        }, {
+	          color: 'green',
+	          lo: 10,
+	          hi: 30
+	        }, {
+	          color: 'yellow',
+	          lo: -10,
+	          hi: 10
+	        }],
+	        counter: true
+		});
+	    ghum = new JustGage({
+		id: "ghum",
+		value: {{w_hum}},
+		valueFontColor: "black",
+		title: "Humedad",
+		titleFontColor: "black",
+		label: "%",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 100,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 70,
+	          hi: 100
+	        }, {
+	          color: 'green',
+	          lo: 30,
+	          hi: 70
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 30
+	        }],
+	        counter: true
+		});
+	    grad = new JustGage({
+		id: "grad",
+		value: {{w_rad}},
+		valueFontColor: "black",
+		title: "Radiación",
+		titleFontColor: "black",
+		label: "W/m2",
+		labelFontColor: "black",
+		decimals: 0,
+		pointer: true,
+		min: 0,
+		max: 1200,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 800,
+	          hi: 1200
+	        }, {
+	          color: 'green',
+	          lo: 400,
+	          hi: 800
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 400
+	        }],
+	        counter: true
+		});
+	    gwin = new JustGage({
+		id: "gwin",
+		value: {{w_win}},
+		valueFontColor: "black",
+		title: "Viento",
+		titleFontColor: "black",
+		label: "m/s",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 20,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 10,
+	          hi: 20
+	        }, {
+	          color: 'green',
+	          lo: 5,
+	          hi: 10
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 5
+	        }],
+	        counter: true
+		});
+     });
+    </script>
+
+<!--------------------------------------------------------------------
+	End
+--------------------------------------------------------------------->
+</body>
+</html>
+

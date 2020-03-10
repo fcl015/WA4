@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agro.io: Gráficas Area 1 Sensores</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--------------------------------------------------------------------
+	Webpage style configuration
+--------------------------------------------------------------------->
+	<style>
+	* {
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: Arial, Helvetica, sans-serif;
+	    margin: 0;
+	}
+	
+
+	/* Style the header */
+	.header {
+	    padding: 1px;
+	    text-align: center;
+	    background: #1abc9c;
+	    color: white;
+	}
+	
+	/* Increase the font size of the h1 element */
+	.header h1 {
+	    font-size: 20px;
+	}
+	
+	
+	/* Footer */
+	.footer {
+	    padding: 5px;
+	    text-align: center;
+	    background: #ddd;
+	    font-size: 20px;
+	}
+	
+	/* Table */
+	table {
+            width:100%; 
+            float:left;
+	}
+	</style>
+
+
+</head>
+
+<!--------------------------------------------------------------------
+	Webpage content
+--------------------------------------------------------------------->
+<body>
+	<div class="header">
+	  <h1>Gráficas de Humedad de Suelo</h1>
+	</div>
+
+<!--------------------------------------------------------------------
+	Graphs
+--------------------------------------------------------------------->
+
+	<table border="0" align="center">
+
+<!--------------------------------------------------------------------
+	Evapotranspiration
+--------------------------------------------------------------------->
+	<tr bgcolor="black">
+	   <td align="center"><span style="font-size:20pt;text-align:center;color:white">
+		Area 1</span>
+	</td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/805288/charts/1?bgcolor=%23ffffff&color=%23d62020&days={{plot_days}}&dynamic=true&title=Promedio&type=line&xaxis=Fecha&yaxis=%25+VWC&yaxismax=60&yaxismin=0"></iframe></td>
+	</tr>
+	<tr bgcolor="white">
+	   <td align="center"><span style="font-size:10pt;text-align:center;color:white">.</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/805288/charts/2?bgcolor=%23ffffff&color=%23d62020&days={{plot_days}}&dynamic=true&title=Sensor+1&type=line&xaxis=Fecha&yaxis=%25+VWC&yaxismax=60&yaxismin=0"></iframe></td>
+	</tr>
+	<tr bgcolor="white">
+	   <td align="center"><span style="font-size:10pt;text-align:center;color:white">.</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/805288/charts/3?bgcolor=%23ffffff&color=%23d62020&days={{plot_days}}&dynamic=true&title=Sensor+2&type=line&xaxis=Fecha&yaxis=%25+VWC&yaxismax=60&yaxismin=0"></iframe></td>
+	</tr>
+	<tr bgcolor="white">
+	   <td align="center"><span style="font-size:10pt;text-align:center;color:white">.</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/805288/charts/4?bgcolor=%23ffffff&color=%23d62020&days={{plot_days}}&dynamic=true&title=Sensor+3&type=line&xaxis=Fecha&yaxis=%25+VWC&yaxismax=60&yaxismin=0"></iframe></td>
+	</tr>
+	<tr bgcolor="white">
+	   <td align="center"><span style="font-size:10pt;text-align:center;color:white">.</span></td>
+	</tr>
+
+
+	</table>
+
+<!--------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------->
+	<hr>
+	<div class="footer">
+		<a href="/thingspeak_index/">Regresar a Gráficas</a>
+	</div>
+
+
+<!--------------------------------------------------------------------
+	End
+--------------------------------------------------------------------->
+</body>
+</html>
+

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agro.io: Control Area 4</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--------------------------------------------------------------------
+	Webiopi Java Script
+--------------------------------------------------------------------->
+    	<script type="text/javascript" src="/webiopi.js"></script>
+    	<script type="text/javascript">
+		webiopi().ready(init);
+        
+        // defines function passed previously to webiopi().ready()
+        function init() {
+                // automatically refresh UI each seconds
+                setInterval(updateUI, 1000);
+
+ 		// Create button to change operation mode
+        	var updateModeValue = function(macro, args, response) {
+			$("#inputMode").val(response);
+		}
+		webiopi().callMacro("getModeValue4",[],updateModeValue);
+		var sendButton = webiopi().createButton("sendButton","Cambiar", function() {
+			var modeValue=[$("#inputMode").val()];
+			webiopi().callMacro("setModeValue4",modeValue,updateModeValue);
+		});
+		$("#controls").append(sendButton);
+
+
+		// Create button to activate irrigation, only for manual mode
+        	var updateManualValue = function(macro, args, response) {
+			$("#inputManual").val(response);
+		}
+		webiopi().callMacro("getManualValue4",[],updateManualValue);
+		var sendButtonManual = webiopi().createButton("sendButton","Cambiar", function() {
+			var manualValue=[$("#inputManual").val()];
+			webiopi().callMacro("setManualValue4",manualValue,updateManualValue);
+		});
+		$("#manual").append(sendButtonManual);
+
+		// Create button for schedule irrigation, only for time mode
+        	var updateSchedValue = function(macro, args, response) {
+			$("#sensorSched").val(response);
+		}
+		webiopi().callMacro("getSchedValue4",[],updateSchedValue);
+		var sendButtonSched = webiopi().createButton("sendButton","Cambiar", function() {
+			var schedValue=$("#sensorSched").val();
+			webiopi().callMacro("setSchedValue4",$("#sensorSched").serialize(),updateSchedValue);
+			setTimeout(schedMessage,5000);
+		});
+		$("#sched").append(sendButtonSched);
+ 
+		// Create button for irrigation limits, only for automatc mode
+        	var updateLimitsValue = function(macro, args, response) {
+			$("#sensorLimits").val(response);
+		}
+		webiopi().callMacro("getLimitsValue4",[],updateLimitsValue);
+		var sendButtonLimits = webiopi().createButton("sendButton","Cambiar", function() {
+			var limitsValue=$("#sensorLimits").val();
+			webiopi().callMacro("setLimitsValue4",$("#sensorLimits").serialize(),updateLimitsValue);
+			setTimeout(limitsMessage,5000);
+		});
+		$("#limits").append(sendButtonLimits);
+       }
+
+        // function called through setInterval
+        function schedMessage() {
+                alert("Calendario Actualizado");
+		location.reload();
+         }       
+
+        // function called through setInterval
+        function limitsMessage() {
+                alert("Límites Actualizados");
+		location.reload();
+         }       
+
+        // function called through setInterval
+        function updateUI() {
+                // call macros for Grove Pi sensors
+                webiopi().callMacro("getModeValue4",[], sensorCallbackMode);
+                webiopi().callMacro("getManualValue4",[], sensorCallbackManual);
+		webiopi().callMacro("getSchedValue4",[], sensorCallbackSched);
+ 		webiopi().callMacro("getLimitsValue4",[], sensorCallbackLimits);
+        }       
+
+        // callback function used to display sensor data
+        function sensorCallbackMode(macroName, channel, data) {
+			$("#sensorMode").css("background-color", "#EAEDED");
+                       	$("#sensorMode").css("color", "Black");
+                       	$("#sensorMode").css("font-weight", "bold");
+                       	$("#sensorMode").css("font-size", "30pt");
+			$("#sensorMode").text(data);
+        }
+        // callback function used to display sensor data
+        function sensorCallbackManual(macroName, channel, data) {
+			$("#sensorManual").css("background-color", "#EAEDED");
+                       	$("#sensorManual").css("color", "Black");
+                       	$("#sensorManual").css("font-weight", "bold");
+                       	$("#sensorManual").css("font-size", "30pt");
+			$("#sensorManual").text(data);
+        }
+        function sensorCallbackSched(macroName, channel, data) {
+                       	$("#sensorSched").css("color", "Black");
+                       	$("#sensorSched").css("font-weight", "normal");
+                       	$("#sensorSched").css("font-size", "15pt");
+			$("#sensorSched").text(data);
+        }
+        function sensorCallbackLimits(macroName, channel, data) {
+                       	$("#sensorLimits").css("color", "Black");
+                       	$("#sensorLimits").css("font-weight", "normal");
+                       	$("#sensorLimits").css("font-size", "15pt");
+			$("#sensorLimits").text(data);
+        }
+    	</script>
+
+    	<style type="text/css">
+    	button {
+             display: block;
+             margin: 5px 5px 5px 5px;
+             width: 150px;
+             height: 50px;
+             font-size: 15pt;
+             font-weight: bold;
+             color: white;
+	     background-color: gray;
+           }
+    	</style>
+
+<!--------------------------------------------------------------------
+	Webpage style configuration
+--------------------------------------------------------------------->
+	<style>
+	* {
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: Arial, Helvetica, sans-serif;
+	    margin: 0;
+	}
+	
+	/* Style the header */
+	.header {
+	    padding: 1px;
+	    text-align: center;
+	    background: #1abc9c;
+	    color: white;
+	}
+	
+	/* Increase the font size of the h1 element */
+	.header h1 {
+	    font-size: 20px;
+	}
+	
+	
+	/* Footer */
+	.footer {
+	    padding: 5px;
+	    text-align: center;
+	    background: #ddd;
+	    font-size: 20px;
+	}
+	
+	/* Table */
+	table {
+            width:50%; 
+            float:left;
+	}
+
+	/* Select */
+	select {
+	    font-size:15pt;
+	    text-align:center;
+	    color:blue;
+	    font-weight:normal;
+	    height:50px;
+	    width:150px"	
+	}
+
+	/* Text Area */
+	textarea {
+	    font-size:15pt;
+	    text-align:left;
+	    color:black;
+	    font-weight:normal;
+	}
+	/* Responsive layout - when the screen is less than 400px wide */
+	@media screen and (max-width: 400px) {
+	    table {
+	        width:100%;
+            	float:left;
+	    }
+    	    button {
+             	width: 150px;
+             	height: 50px;
+             	font-size: 15pt;
+            }
+	    select {
+	    	font-size:15pt;
+	    	width:150px"	
+	     }
+
+	}
+	</style>
+
+
+</head>
+
+<!--------------------------------------------------------------------
+	Webpage content
+--------------------------------------------------------------------->
+<body>
+	<div class="header">
+	  <h1>Control Area 4</h1>
+	</div>
+
+<!--------------------------------------------------------------------
+	Operation Mode
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   	<td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+			Modo de Operación</span>
+	   	</td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   	<td colspan="2" align="center"><span style="font-size:15pt;color:black">(0)Manual (1)Tiempo (2)Auto</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td colspan="2" align="center"><span id="sensorMode"></span></td>
+	</tr>
+	<tr bgcolor="White">
+		<td align="right">
+		<select id="inputMode">
+			<option value="0">0-Manual</option>
+			<option value="1">1-Tiempo</option>
+			<option value="2">2-Automático</option>
+		</select>	
+		</td>
+		<td align="left">
+			<div id="controls">
+		</td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Irrigation Control (Manual Mode Only)
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   	<td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+			Control Manual</span>
+	   	</td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   	<td colspan="2" align="center"><span style="font-size:15pt;color:black">(0)Desactivar (1)Activar</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td colspan="2" align="center"><span id="sensorManual"></span></td>
+	</tr>
+	<tr bgcolor="White">
+		<td align="right">
+		<select id="inputManual">
+			<option value="0">0-Desactivar</option>
+			<option value="1">1-Activar</option>
+		</select>		
+		</td>
+		<td align="left">
+			<div id="manual">
+		</td>
+	</tr>
+	</table>
+<!--------------------------------------------------------------------
+	Irrigation Control (Time Mode Only)
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   	<td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+			Control por Tiempo</span>
+	   	</td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   	<td colspan="2" align="center"><span style="font-size:15pt;color:black">Configurar Calendario</span></td>
+
+	<tr bgcolor="White" >
+	<td align="center"><textarea name="scheduleData" rows="8" cols="28" id="sensorSched"></textarea></td>
+	</tr>
+
+	<tr bgcolor="White">
+		<td colspan="2" align="center">
+			<div id="sched">
+		</td>
+	</tr>
+	</table>
+<!--------------------------------------------------------------------
+	Irrigation Control (Automatic Mode Only)
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   	<td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+			Control Automático</span>
+	   	</td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   	<td colspan="2" align="center"><span style="font-size:15pt;color:black">Configurar Límites</span></td>
+	</tr>
+
+	<tr bgcolor="White" >
+	<td align="center"><textarea name="limitsData" rows="8" cols="28" id="sensorLimits"></textarea></td>
+	</tr>
+
+	<tr bgcolor="White">
+		<td colspan="2" align="center">
+			<div id="limits">
+		</td>
+	</tr>
+	</table>
+<!--------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------->
+	<hr>
+	<div class="footer">
+		<a href="index.html">Regresar a Inicio</a>
+	</div>
+
+</body>
+</html>
+

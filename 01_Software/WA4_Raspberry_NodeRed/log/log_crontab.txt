@@ -1,0 +1,235 @@
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 11:45:01 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 11:45:01 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 11:45:47 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 11:45:47 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 11:45:54 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 11:45:54 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 11:46:08 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 11:46:08 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 11:46:52 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 11:46:52 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 11:50:01 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 11:50:01 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 11:55:01 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 11:55:01 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 12:00:01 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 12:00:01 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 12:05:01 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 12:05:01 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 12:10:02 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 12:10:02 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 12:15:01 MST 2019
+IRRIGATION AREA 1
+(1) Read configuration files
+    OPERATION MODE: manual
+(2) Configure serial port
+(3) Transmit message to weather node
+Ending WA4 Area 1 control loop process
+vie dic  6 12:15:03 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 12:20:01 MST 2019
+IRRIGATION AREA 1
+(1) Read configuration files
+    OPERATION MODE: manual
+(2) Configure serial port
+(3) Transmit message to weather node
+Ending WA4 Area 1 control loop process
+vie dic  6 12:20:03 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 12:25:01 MST 2019
+IRRIGATION AREA 1
+(1) Read configuration files
+    OPERATION MODE: manual
+(2) Configure serial port
+(3) Transmit message to weather node
+Ending WA4 Area 1 control loop process
+vie dic  6 12:25:04 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 18:15:01 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 18:15:01 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 18:15:32 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 18:16:36 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 18:16:42 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 18:16:45 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 18:16:49 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 18:17:53 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 18:18:24 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 18:19:27 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 18:20:01 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 18:20:01 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 18:24:40 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 18:25:43 MST 2019
+----------------------------------------
+Starting WA4 Area 2 control loop process
+vie dic  6 18:25:43 MST 2019
+IRRIGATION AREA 2
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+<Response [200]>
+Ending WA4 Area 2 control loop process
+vie dic  6 18:26:47 MST 2019
+----------------------------------------
+Starting WA4 Area 3 control loop process
+vie dic  6 18:26:47 MST 2019
+IRRIGATION AREA 3
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+<Response [200]>
+Ending WA4 Area 3 control loop process
+vie dic  6 18:27:50 MST 2019
+----------------------------------------
+Starting WA4 Area 4 control loop process
+vie dic  6 18:27:50 MST 2019
+IRRIGATION AREA 4
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+<Response [200]>
+Ending WA4 Area 4 control loop process
+vie dic  6 18:28:53 MST 2019
+----------------------------------------
+Starting WA4 Area 1 control loop process
+vie dic  6 18:30:01 MST 2019
+Ending WA4 Area 1 control loop process
+vie dic  6 18:30:01 MST 2019
+----------------------------------------
+Starting WA4 Area 2 control loop process
+vie dic  6 18:30:01 MST 2019
+IRRIGATION AREA 2
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+<Response [200]>
+Ending WA4 Area 2 control loop process
+vie dic  6 18:31:04 MST 2019
+----------------------------------------
+Starting WA4 Area 3 control loop process
+vie dic  6 18:31:04 MST 2019
+IRRIGATION AREA 3
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+<Response [200]>
+Ending WA4 Area 3 control loop process
+vie dic  6 18:32:08 MST 2019
+----------------------------------------
+Starting WA4 Area 4 control loop process
+vie dic  6 18:32:08 MST 2019
+IRRIGATION AREA 4
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR WEATHER NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+    ERROR SENSOR NODE Timeout: No Message received
+    Communication retry....
+<Response [200]>
+Ending WA4 Area 4 control loop process
+vie dic  6 18:33:11 MST 2019
+                                                                                                               

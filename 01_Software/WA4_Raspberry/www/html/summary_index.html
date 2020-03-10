@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agro.io: Summary</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--------------------------------------------------------------------
+	Webiopi Java Script
+--------------------------------------------------------------------->
+    	<script type="text/javascript" src="/webiopi.js"></script>
+    	<script type="text/javascript">
+		webiopi().ready(init);
+        
+        // defines function passed previously to webiopi().ready()
+        function init() {
+                // automatically refresh UI each seconds
+                setInterval(updateUI, 1000);
+
+        }
+
+        // function called through setInterval
+        function updateUI() {
+                // call macros for Grove Pi sensors
+                webiopi().callMacro("getSensor1", 1, sensorCallback1);
+                webiopi().callMacro("getSensor2", 1, sensorCallback2);
+                webiopi().callMacro("getSensor3", 1, sensorCallback3);
+                webiopi().callMacro("getSensor4", 1, sensorCallback4);
+                webiopi().callMacro("getSensor1", 5, sensorCallback1);
+                webiopi().callMacro("getSensor2", 5, sensorCallback2);
+                webiopi().callMacro("getSensor3", 5, sensorCallback3);
+                webiopi().callMacro("getSensor4", 5, sensorCallback4);
+                webiopi().callMacro("getSensor1", 6, sensorCallback1);
+                webiopi().callMacro("getSensor2", 6, sensorCallback2);
+                webiopi().callMacro("getSensor3", 6, sensorCallback3);
+                webiopi().callMacro("getSensor4", 6, sensorCallback4);
+                webiopi().callMacro("getSensor1", 11, sensorCallback1);
+                webiopi().callMacro("getSensor2", 11, sensorCallback2);
+                webiopi().callMacro("getSensor3", 11, sensorCallback3);
+                webiopi().callMacro("getSensor4", 11, sensorCallback4);
+         }       
+
+        // callback function used to display sensor data
+        function sensorCallback1(macroName, channel, data) {
+		if(channel==1){
+			$("#a1_sensor"+channel).css("background-color", "White");
+                       	$("#a1_sensor"+channel).css("color", "Blue");
+                       	$("#a1_sensor"+channel).css("font-weight", "bold");
+                       	$("#a1_sensor"+channel).css("font-size", "40pt");
+			$("#a1_sensor"+channel).text(data);
+		}
+		else{
+			$("#a1_sensor"+channel).css("background-color", "White");
+                       	$("#a1_sensor"+channel).css("color", "Blue");
+                       	$("#a1_sensor"+channel).css("font-weight", "bold");
+                       	$("#a1_sensor"+channel).css("font-size", "20pt");
+			$("#a1_sensor"+channel).text(data);
+		}		
+        }
+
+        // callback function used to display sensor data
+        function sensorCallback2(macroName, channel, data) {
+		if(channel==1){
+			$("#a2_sensor"+channel).css("background-color", "White");
+                       	$("#a2_sensor"+channel).css("color", "Blue");
+                       	$("#a2_sensor"+channel).css("font-weight", "bold");
+                       	$("#a2_sensor"+channel).css("font-size", "40pt");
+			$("#a2_sensor"+channel).text(data);
+		}
+		else{
+			$("#a2_sensor"+channel).css("background-color", "White");
+                       	$("#a2_sensor"+channel).css("color", "Blue");
+                       	$("#a2_sensor"+channel).css("font-weight", "bold");
+                       	$("#a2_sensor"+channel).css("font-size", "20pt");
+			$("#a2_sensor"+channel).text(data);
+		}		
+        }
+
+        // callback function used to display sensor data
+        function sensorCallback3(macroName, channel, data) {
+		if(channel==1){
+			$("#a3_sensor"+channel).css("background-color", "White");
+                       	$("#a3_sensor"+channel).css("color", "Blue");
+                       	$("#a3_sensor"+channel).css("font-weight", "bold");
+                       	$("#a3_sensor"+channel).css("font-size", "40pt");
+			$("#a3_sensor"+channel).text(data);
+		}
+		else{
+			$("#a3_sensor"+channel).css("background-color", "White");
+                       	$("#a3_sensor"+channel).css("color", "Blue");
+                       	$("#a3_sensor"+channel).css("font-weight", "bold");
+                       	$("#a3_sensor"+channel).css("font-size", "20pt");
+			$("#a3_sensor"+channel).text(data);
+		}		
+        }
+
+        // callback function used to display sensor data
+        function sensorCallback4(macroName, channel, data) {
+		if(channel==1){
+			$("#a4_sensor"+channel).css("background-color", "White");
+                       	$("#a4_sensor"+channel).css("color", "Blue");
+                       	$("#a4_sensor"+channel).css("font-weight", "bold");
+                       	$("#a4_sensor"+channel).css("font-size", "40pt");
+			$("#a4_sensor"+channel).text(data);
+		}
+		else{
+			$("#a4_sensor"+channel).css("background-color", "White");
+                       	$("#a4_sensor"+channel).css("color", "Blue");
+                       	$("#a4_sensor"+channel).css("font-weight", "bold");
+                       	$("#a4_sensor"+channel).css("font-size", "20pt");
+			$("#a4_sensor"+channel).text(data);
+		}		
+        }
+    	</script>
+
+
+<!--------------------------------------------------------------------
+	Webpage style configuration
+--------------------------------------------------------------------->
+	<style>
+	* {
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: Arial, Helvetica, sans-serif;
+	    margin: 0;
+	}
+	
+	/* Style the header */
+	.header {
+	    padding: 1px;
+	    text-align: center;
+	    background: #1abc9c;
+	    color: white;
+	}
+	
+	/* Increase the font size of the h1 element */
+	.header h1 {
+	    font-size: 20px;
+	}
+	
+	
+	/* Footer */
+	.footer {
+	    padding: 5px;
+	    text-align: center;
+	    background: #ddd;
+	    font-size: 20px;
+	}
+	
+	/* Table */
+	table {
+            width:50%; 
+            float:left;
+	}
+	/* Responsive layout - when the screen is less than 400px wide */
+	@media screen and (max-width: 400px) {
+	    table {
+	        width:100%;
+            	float:left;
+	    }
+	}
+	</style>
+
+
+</head>
+
+<!--------------------------------------------------------------------
+	Webpage content
+--------------------------------------------------------------------->
+<body>
+	<div class="header">
+	  <h1>Resumen</h1>
+	</div>
+
+<!--------------------------------------------------------------------
+	Area 1 Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="3" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Area 1</span><
+	   /td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td colspan="3" align="center"><span style="font-size:20pt;color:black">(%vwc)</span></td>
+	</tr>
+	<tr bgcolor="White">
+         <td colspan="3" align="center"><span id="a1_sensor1"></span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">Válvula</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">Flujo de Agua</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">ETo</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">(on/off)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(lpm)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(mm/día)</span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="a1_sensor5"></span></td>
+	   <td align="center"><span id="a1_sensor6"></span></td>
+	   <td align="center"><span id="a1_sensor11"></span></td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Area 2 Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="3" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Area 2</span><
+	   /td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td colspan="3" align="center"><span style="font-size:20pt;color:black">(%vwc)</span></td>
+	</tr>
+	<tr bgcolor="White">
+         <td colspan="3" align="center"><span id="a2_sensor1"></span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">Válvula</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">Flujo de Agua</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">ETo</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">(on/off)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(lpm)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(mm/día)</span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="a2_sensor5"></span></td>
+	   <td align="center"><span id="a2_sensor6"></span></td>
+	   <td align="center"><span id="a2_sensor11"></span></td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Area 3 Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="3" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Area 3</span><
+	   /td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td colspan="3" align="center"><span style="font-size:20pt;color:black">(%vwc)</span></td>
+	</tr>
+	<tr bgcolor="White">
+         <td colspan="3" align="center"><span id="a3_sensor1"></span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">Válvula</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">Flujo de Agua</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">ETo</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">(on/off)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(lpm)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(mm/día)</span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="a3_sensor5"></span></td>
+	   <td align="center"><span id="a3_sensor6"></span></td>
+	   <td align="center"><span id="a3_sensor11"></span></td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Area 4 Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="3" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Area 4</span><
+	   /td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td colspan="3" align="center"><span style="font-size:20pt;color:black">(%vwc)</span></td>
+	</tr>
+	<tr bgcolor="White">
+         <td colspan="3" align="center"><span id="a4_sensor1"></span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">Válvula</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">Flujo de Agua</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">ETo</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">(on/off)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(lpm)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(mm/día)</span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="a4_sensor5"></span></td>
+	   <td align="center"><span id="a4_sensor6"></span></td>
+	   <td align="center"><span id="a4_sensor11"></span></td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------->
+	<hr>
+	<div class="footer">
+		<a href="index.html">Regresar a Inicio</a>
+	</div>
+
+</body>
+</html>
+

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agro.io: Monitor Area 2</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!--------------------------------------------------------------------
+	Webiopi Java Script
+--------------------------------------------------------------------->
+    	<script type="text/javascript" src="/webiopi.js"></script>
+    	<script type="text/javascript">
+		webiopi().ready(init);
+        
+        // defines function passed previously to webiopi().ready()
+        function init() {
+                // automatically refresh UI each seconds
+                setInterval(updateUI, 1000);
+
+        }
+
+        // function called through setInterval
+        function updateUI() {
+                // call macros for Grove Pi sensors
+                webiopi().callMacro("getSensor2", 0, sensorCallback);
+                webiopi().callMacro("getSensor2", 1, sensorCallback);
+                webiopi().callMacro("getSensor2", 2, sensorCallback);
+                webiopi().callMacro("getSensor2", 3, sensorCallback);
+                webiopi().callMacro("getSensor2", 4, sensorCallback);
+                webiopi().callMacro("getSensor2", 5, sensorCallback);
+                webiopi().callMacro("getSensor2", 6, sensorCallback);
+                webiopi().callMacro("getSensor2", 11, sensorCallback);
+                webiopi().callMacro("getSensor2", 13, sensorCallback);
+         }       
+
+        // callback function used to display sensor data
+        function sensorCallback(macroName, channel, data) {
+		if(channel==0){
+                       	$("#sensor"+channel).css("color", "White");
+                       	$("#sensor"+channel).css("font-weight", "normal");
+                       	$("#sensor"+channel).css("font-size", "15pt");
+			$("#sensor"+channel).text(data);
+		}
+		else if(channel==1){
+			$("#sensor"+channel).css("background-color", "White");
+                       	$("#sensor"+channel).css("color", "Blue");
+                       	$("#sensor"+channel).css("font-weight", "bold");
+                       	$("#sensor"+channel).css("font-size", "66pt");
+			$("#sensor"+channel).text(data);
+		}
+		else{
+			$("#sensor"+channel).css("background-color", "White");
+                       	$("#sensor"+channel).css("color", "Blue");
+                       	$("#sensor"+channel).css("font-weight", "bold");
+                       	$("#sensor"+channel).css("font-size", "20pt");
+			$("#sensor"+channel).text(data);
+		}		
+        }
+    	</script>
+
+<!--------------------------------------------------------------------
+	Webpage style configuration
+--------------------------------------------------------------------->
+	<style>
+	* {
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: Arial, Helvetica, sans-serif;
+	    margin: 0;
+	}
+	
+	/* Style the header */
+	.header {
+	    padding: 1px;
+	    text-align: center;
+	    background: #1abc9c;
+	    color: white;
+	}
+	
+	/* Increase the font size of the h1 element */
+	.header h1 {
+	    font-size: 20px;
+	}
+	
+	
+	/* Footer */
+	.footer {
+	    padding: 5px;
+	    text-align: center;
+	    background: #ddd;
+	    font-size: 20px;
+	}
+	
+	/* Table */
+	table {
+            width:50%; 
+            float:left;
+	}
+	/* Responsive layout - when the screen is less than 400px wide */
+	@media screen and (max-width: 400px) {
+	    table {
+	        width:100%;
+            	float:left;
+	    }
+	}
+	</style>
+
+
+</head>
+
+<!--------------------------------------------------------------------
+	Webpage content
+--------------------------------------------------------------------->
+<body>
+	<div class="header">
+	  <h1>Monitoreo Area 2</h1>
+	  <h1>Last Updated: <span id="sensor0"></h1>
+	</div>
+
+<!--------------------------------------------------------------------
+	Soil Moisture Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="3" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Humedad de Suelo</span><
+	   /td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td colspan="3" align="center"><span style="font-size:20pt;color:black">(%vwc)</span></td>
+	</tr>
+	<tr bgcolor="White">
+         <td colspan="3" align="center"><span id="sensor1"></span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">Sensor1</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">Sensor2</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">Sensor3</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">(%vwc)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(%vwc)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(%vwc)</span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="sensor2"></span></td>
+	   <td align="center"><span id="sensor3"></span></td>
+	   <td align="center"><span id="sensor4"></span></td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Irrigation Valve Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Riego</span><
+	   /td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">Válvula</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">Flujo de Agua</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">(on/off)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(lpm)</span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="sensor5"></span></td>
+	   <td align="center"><span id="sensor6"></span></td>
+	</tr>
+	</table>
+
+
+<!--------------------------------------------------------------------
+	ETo/NDVI Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Ambiente</span><
+	   /td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">ETo</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">NDVI</span></td>
+	</tr>
+	<tr bgcolor="#EAEDED">
+	   <td align="center"><span style="font-size:20pt;color:black">(mm/día)</span></td>
+	   <td align="center"><span style="font-size:20pt;color:black">(0-1)</span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="sensor11"></span></td>
+	   <td align="center"><span id="sensor13"></span></td>
+	</tr>
+	</table>
+
+
+<!--------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------->
+	<hr>
+	<div class="footer">
+		<a href="index.html">Regresar a Inicio</a>
+	</div>
+
+</body>
+</html>
+

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agro.io: Monitor Area 4</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="60">
+
+<!--------------------------------------------------------------------
+	Webpage style configuration
+--------------------------------------------------------------------->
+	<style>
+	* {
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: Arial, Helvetica, sans-serif;
+	    margin: 0;
+	}
+	
+	/* Style gages */
+	#gsmC,
+	#gsm1,
+	#gsm2,
+	#gsm3,
+	#gv,
+	#gf,
+	#geto {
+		width: auto;
+		height: auto;
+		display: inline-block;
+		margin: auto;
+	}
+
+	/* Style the header */
+	.header {
+	    padding: 1px;
+	    text-align: center;
+	    background: #1abc9c;
+	    color: white;
+	}
+	
+	/* Increase the font size of the h1 element */
+	.header h1 {
+	    font-size: 20px;
+	}
+	
+	
+	/* Footer */
+	.footer {
+	    padding: 5px;
+	    text-align: center;
+	    background: #ddd;
+	    font-size: 20px;
+	}
+	
+	/* Table */
+	table {
+            width:100%; 
+            float:left;
+	}
+	</style>
+
+
+</head>
+
+<!--------------------------------------------------------------------
+	Webpage content
+--------------------------------------------------------------------->
+<body>
+	<div class="header">
+	  <h1>Monitoreo Area 4</h1>
+	  <h1>Last Updated: {{timestamp}}</h1>
+	</div>
+
+<!--------------------------------------------------------------------
+	Soil Moisture Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="3" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Humedad de Suelo</span><
+	   /td>
+	</tr>
+	<tr bgcolor="White">
+         <td colspan="3" align="center"><span id="gsmC"></span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="gsm1"></span></td>
+	   <td align="center"><span id="gsm2"></span></td>
+	   <td align="center"><span id="gsm3"></span></td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Irrigation Valve Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="3" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Riego - Ambiente</span><
+	   /td>
+	</tr>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="gv"></span></td>
+	   <td align="center"><span id="gf"></span></td>
+	   <td align="center"><span id="geto"></span></td>
+	</tr>
+	</table>
+
+
+
+<!--------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------->
+	<hr>
+	<div class="footer">
+		<a href="/monitor_index/">Regresar a Monitoreo</a>
+	</div>
+
+<!--------------------------------------------------------------------
+	Javascript gages
+--------------------------------------------------------------------->
+
+    <script src="/static/raphael-2.1.4.min.js"></script>
+    <script src="/static/justgage.js"></script>
+    <script>
+	var gsmC,gsm1,gsm2,gsm3,gv,gf,geto;
+	document.addEventListener("DOMContentLoaded", function(event) {
+	    gsmC = new JustGage({
+		id: "gsmC",
+		value: {{smC}},
+		valueFontColor: "black",
+		title: "Promedio",
+		titleFontColor: "black",
+		label: "VWC",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		symbol: "%",
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 40,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 20,
+	          hi: 40
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 20
+	        }],
+	        counter: true
+		});
+	    gsm1 = new JustGage({
+		id: "gsm1",
+		value: {{sm1}},
+		valueFontColor: "black",
+		title: "Sensor 1",
+		titleFontColor: "black",
+		label: "VWC",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		symbol: "%",
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 40,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 20,
+	          hi: 40
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 20
+	        }],
+	        counter: true
+		});
+	    gsm2 = new JustGage({
+		id: "gsm2",
+		value: {{sm2}},
+		valueFontColor: "black",
+		title: "Sensor 2",
+		titleFontColor: "black",
+		label: "VWC",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		symbol: "%",
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 40,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 20,
+	          hi: 40
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 20
+	        }],
+	        counter: true
+		});
+	    gsm3 = new JustGage({
+		id: "gsm3",
+		value: {{sm3}},
+		valueFontColor: "black",
+		title: "Sensor 3",
+		titleFontColor: "black",
+		label: "VWC",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		symbol: "%",
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 40,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 20,
+	          hi: 40
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 20
+	        }],
+	        counter: true
+		});
+
+	    gv = new JustGage({
+		id: "gv",
+		value: {{valve}},
+		valueFontColor: "black",
+		label: "ON/OFF",
+		labelFontColor: "black",
+		min: 0,
+		max: 1,
+		relativeGaugeSize: true,
+		donut: true,
+		gaugeColor: 'red',
+		levelColors: ["green"],
+		});
+
+	    gf = new JustGage({
+		id: "gf",
+		value: {{flow}},
+		valueFontColor: "black",
+		title: "Flujo Agua",
+		titleFontColor: "black",
+		label: "LPM",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 50,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 30,
+	          hi: 50
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 30
+	        }],
+	        counter: true
+		});
+	    geto = new JustGage({
+		id: "geto",
+		value: {{w_eto}},
+		valueFontColor: "black",
+		title: "Evapotranspiración",
+		titleFontColor: "black",
+		label: "mm/día",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 20,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 10,
+	          hi: 20
+	        }, {
+	          color: 'green',
+	          lo: 5,
+	          hi: 10
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 5
+	        }],
+	        counter: true
+		});
+
+     });
+    </script>
+
+<!--------------------------------------------------------------------
+	End
+--------------------------------------------------------------------->
+</body>
+</html>
+

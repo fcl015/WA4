@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Agro.io: Summary</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="60">
+
+<!--------------------------------------------------------------------
+	Webpage style configuration
+--------------------------------------------------------------------->
+	<style>
+	* {
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: Arial, Helvetica, sans-serif;
+	    margin: 0;
+	}
+	
+	/* Style gages */
+	#g1,
+	#g2,
+	#g3,
+	#g4,
+	#gv1,
+	#gv2,
+	#gv3,
+	#gv4, 
+	#gf1,
+	#gf2,
+	#gf3,
+	#gf4 {
+		width: auto;
+		height: auto;
+		display: inline-block;
+		margin: auto;
+	}
+
+	/* Style the header */
+	.header {
+	    padding: 1px;
+	    text-align: center;
+	    background: #1abc9c;
+	    color: white;
+	}
+	
+	/* Increase the font size of the h1 element */
+	.header h1 {
+	    font-size: 20px;
+	}
+	
+	
+	/* Footer */
+	.footer {
+	    padding: 5px;
+	    text-align: center;
+	    background: #ddd;
+	    font-size: 20px;
+	}
+	
+	/* Table */
+	table {
+            width:50%; 
+            float:left;
+	}
+	/* Responsive layout - when the screen is less than 400px wide */
+	@media screen and (max-width: 400px) {
+	    table {
+	        width:100%;
+            	float:left;
+	    }
+	}
+	</style>
+
+
+</head>
+
+<!--------------------------------------------------------------------
+	Webpage content
+--------------------------------------------------------------------->
+<body>
+	<div class="header">
+	  <h1>Resumen</h1>
+	</div>
+
+<!--------------------------------------------------------------------
+	Area 1 Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Area 1</span><
+	   /td>
+	</tr>
+	<tr bgcolor="White">
+           <td colspan="2" align="center"><span id="g1"></span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="gv1"></span></td>
+	   <td align="center"><span id="gf1"></span></td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Area 2 Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Area 2</span><
+	   /td>
+	</tr>
+	<tr bgcolor="White">
+           <td colspan="2" align="center"><span id="g2"></span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="gv2"></span></td>
+	   <td align="center"><span id="gf2"></span></td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Area 3 Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Area 3</span><
+	   /td>
+	</tr>
+	<tr bgcolor="White">
+           <td colspan="2" align="center"><span id="g3"></span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="gv3"></span></td>
+	   <td align="center"><span id="gf3"></span></td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Area 4 Table
+--------------------------------------------------------------------->
+	<table border="0">
+	<tr bgcolor="black">
+	   <td colspan="2" align="center"><span style="font-size:20pt;font-weight:bold;text-align:center;color:white">
+		Area 4</span><
+	   /td>
+	</tr>
+	<tr bgcolor="White">
+           <td colspan="2" align="center"><span id="g4"></span></td>
+	</tr>
+	<tr bgcolor="White">
+	   <td align="center"><span id="gv4"></span></td>
+	   <td align="center"><span id="gf4"></span></td>
+	</tr>
+	</table>
+
+<!--------------------------------------------------------------------
+	Footer
+--------------------------------------------------------------------->
+	<hr>
+	<div class="footer">
+		<a href="/">Regresar a Inicio</a>
+	</div>
+<!--------------------------------------------------------------------
+	Javascript gages
+--------------------------------------------------------------------->
+
+    <script src="/static/raphael-2.1.4.min.js"></script>
+    <script src="/static/justgage.js"></script>
+    <script>
+	var g1,g2,g3,g4,gv1,gv2,gv3,gv4,gf1,gf2,gf3,gf4;
+	document.addEventListener("DOMContentLoaded", function(event) {
+	    g1 = new JustGage({
+		id: "g1",
+		value: {{smC1}},
+		valueFontColor: "black",
+		title: "Humedad Suelo",
+		titleFontColor: "black",
+		label: "VWC",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		symbol: "%",
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 40,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 20,
+	          hi: 40
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 20
+	        }],
+	        counter: true
+		});
+	    g2 = new JustGage({
+		id: "g2",
+		value: {{smC2}},
+		valueFontColor: "black",
+		title: "Humedad Suelo",
+		titleFontColor: "black",
+		label: "VWC",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		symbol: "%",
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 40,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 20,
+	          hi: 40
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 20
+	        }],
+	        counter: true
+		});
+	    g3 = new JustGage({
+		id: "g3",
+		value: {{smC3}},
+		valueFontColor: "black",
+		title: "Humedad Suelo",
+		titleFontColor: "black",
+		label: "VWC",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		symbol: "%",
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 40,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 20,
+	          hi: 40
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 20
+	        }],
+	        counter: true
+		});
+	    g4 = new JustGage({
+		id: "g4",
+		value: {{smC4}},
+		valueFontColor: "black",
+		title: "Humedad Suelo",
+		titleFontColor: "black",
+		label: "VWC",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		symbol: "%",
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 40,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 20,
+	          hi: 40
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 20
+	        }],
+	        counter: true
+		});
+
+	    gv1 = new JustGage({
+		id: "gv1",
+		value: {{valve1}},
+		valueFontColor: "black",
+		label: "ON/OFF",
+		labelFontColor: "black",
+		min: 0,
+		max: 1,
+		relativeGaugeSize: true,
+		donut: true,
+		gaugeColor: 'red',
+		levelColors: ["green"],
+		});
+	    gv2 = new JustGage({
+		id: "gv2",
+		value: {{valve2}},
+		valueFontColor: "black",
+		label: "ON/OFF",
+		labelFontColor: "black",
+		min: 0,
+		max: 1,
+		relativeGaugeSize: true,
+		donut: true,
+		gaugeColor: 'red',
+		levelColors: ["green"],
+		});
+	    gv3 = new JustGage({
+		id: "gv3",
+		value: {{valve3}},
+		valueFontColor: "black",
+		label: "ON/OFF",
+		labelFontColor: "black",
+		min: 0,
+		max: 1,
+		relativeGaugeSize: true,
+		donut: true,
+		gaugeColor: 'red',
+		levelColors: ["green"],
+		});
+	    gv4 = new JustGage({
+		id: "gv4",
+		value: {{valve4}},
+		valueFontColor: "black",
+		label: "ON/OFF",
+		labelFontColor: "black",
+		min: 0,
+		max: 1,
+		relativeGaugeSize: true,
+		donut: true,
+		gaugeColor: 'red',
+		levelColors: ["green"],
+		});
+
+	    gf1 = new JustGage({
+		id: "gf1",
+		value: {{flow1}},
+		valueFontColor: "black",
+		title: "Flujo Agua",
+		titleFontColor: "black",
+		label: "LPM",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 50,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 30,
+	          hi: 50
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 30
+	        }],
+	        counter: true
+		});
+	    gf2 = new JustGage({
+		id: "gf2",
+		value: {{flow2}},
+		valueFontColor: "black",
+		title: "Flujo Agua",
+		titleFontColor: "black",
+		label: "LPM",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 50,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 30,
+	          hi: 50
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 30
+	        }],
+	        counter: true
+		});
+	    gf3 = new JustGage({
+		id: "gf3",
+		value: {{flow3}},
+		valueFontColor: "black",
+		title: "Flujo Agua",
+		titleFontColor: "black",
+		label: "LPM",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 50,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 30,
+	          hi: 50
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 30
+	        }],
+	        counter: true
+		});
+	    gf4 = new JustGage({
+		id: "gf4",
+		value: {{flow4}},
+		valueFontColor: "black",
+		title: "Flujo Agua",
+		titleFontColor: "black",
+		label: "LPM",
+		labelFontColor: "black",
+		decimals: 1,
+		pointer: true,
+		min: 0,
+		max: 70,
+		relativeGaugeSize: true,
+	        customSectors: [{
+	          color: 'blue',
+	          lo: 50,
+	          hi: 70
+	        }, {
+	          color: 'green',
+	          lo: 30,
+	          hi: 50
+	        }, {
+	          color: 'yellow',
+	          lo: 0,
+	          hi: 30
+	        }],
+	        counter: true
+		});
+
+     });
+    </script>
+
+<!--------------------------------------------------------------------
+	End
+--------------------------------------------------------------------->
+</body>
+</html>
+

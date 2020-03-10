@@ -1,0 +1,36 @@
+Partlist exported from C:/Users/Carlos/Documents/eagle/Nodo actuador triple/Nodo_actuador_doble.sch at 12/04/2015 02:19:37 p. m.
+
+Part Value             Device            Package       Description                                     MF                      MPN  OC_FARNELL OC_NEWARK PROD_ID 
+C1                     C-US050-024X044   C050-024X044  CAPACITOR, American symbol                                                                                
+C2                     CPOL-USE2.5-6     E2,5-6        POLARIZED CAPACITOR, American symbol                                                                      
+C3                     CPOL-USE2.5-6     E2,5-6        POLARIZED CAPACITOR, American symbol                                                                      
+D1   1N4004            1N4004            DO41-10       DIODE                                                                                                     
+D2   1N4004            1N4004            DO41-10       DIODE                                                                                                     
+D3   1N4004            1N4004            DO41-10       DIODE                                                                                                     
+IC1                    78XXS             78XXS         VOLTAGE REGULATOR                                                                                         
+IC2  LM358             LM358             DIP08         Jellybean op-amp                                                                                  IC-09172
+IC3  4050N             4050N             DIL16         Hex non-inverting BUFFER                                                                                  
+K1   G5LE              G5LE              G5LE          RELAY                                                                        unknown    unknown           
+K2   G5LE              G5LE              G5LE          RELAY                                                                        unknown    unknown           
+K3   G5LE              G5LE              G5LE          RELAY                                                                        unknown    unknown           
+LED1                   LED3MM            LED3MM        LED                                                                                                       
+LED2                   LED3MM            LED3MM        LED                                                                                                       
+LED3                   LED3MM            LED3MM        LED                                                                                                       
+OK1  4N35              4N35              DIL06         MOTOROLA OPTO COUPLER                           FAIRCHILD SEMICONDUCTOR 4N35 1328375    72K9946           
+OK2  4N35              4N35              DIL06         MOTOROLA OPTO COUPLER                           FAIRCHILD SEMICONDUCTOR 4N35 1328375    72K9946           
+OK3  4N35              4N35              DIL06         MOTOROLA OPTO COUPLER                           FAIRCHILD SEMICONDUCTOR 4N35 1328375    72K9946           
+R1   330               R-US_0204/7       0204/7        RESISTOR, American symbol                                                                                 
+R2                     R-TRIMMT93YA      RTRIMT93YA    Trimm resistor                                                                                            
+R3   1k                R-US_0204/7       0204/7        RESISTOR, American symbol                                                                                 
+R4   1k                R-US_0204/7       0204/7        RESISTOR, American symbol                                                                                 
+R5   1k                R-US_0204/7       0204/7        RESISTOR, American symbol                                                                                 
+R6   1k                R-US_0204/7       0204/7        RESISTOR, American symbol                                                                                 
+R7   1k                R-US_0204/7       0204/7        RESISTOR, American symbol                                                                                 
+R8   1k                R-US_0204/7       0204/7        RESISTOR, American symbol                                                                                 
+U$1  ARDUINO_R3_SHIELD ARDUINO_R3_SHIELD UNO_R3_SHIELD Shield form compatible with the Arduino Uno R3.                                                           
+U$2  XBEE-1B1          XBEE-1B1          XBEE-1        Xbee module footprints                                                                                    
+X1                     AK500/2           AK500/2       CONNECTOR                                                                    unknown    unknown           
+X2                     AK500/2           AK500/2       CONNECTOR                                                                    unknown    unknown           
+X3                     AK500/2           AK500/2       CONNECTOR                                                                    unknown    unknown           
+X4                     AK500/2           AK500/2       CONNECTOR                                                                    unknown    unknown           
+X5                     AK500/2           AK500/2       CONNECTOR                                                                    unknown    unknown           

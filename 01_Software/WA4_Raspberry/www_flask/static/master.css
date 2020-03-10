@@ -1,0 +1,14 @@
+
+.button {
+  font: 20pt Arial;
+  text-decoration: none;
+  background-color: DarkBlue;
+  color: LightYellow;
+  padding: 2px 6px 2px 6px;
+  border-top: 3px solid Gray;
+  border-right: 3px solid Black;
+  border-bottom: 3px solid Black;
+  border-left: 3px solid Gray;
+}
+
+
